@@ -1,0 +1,108 @@
+html {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s, color 0.3s;
+}
+
+html[data-theme="light"] > body {
+    background: #f5f5f5;
+    color: #333;
+}
+
+html[data-theme="dark"] > body {
+    background: #222;
+    color: #fff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+html[data-theme="dark"] .form-container {
+    background: #333;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+input {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+html[data-theme="dark"] input {
+    background: #444;
+    color: #fff;
+    border-color: #555;
+}
+
+button {
+    padding: 10px 15px;
+    background: #0d91a8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #0b5f6e ;
+}
+
+.hidden {
+    display: none;
+}
+
+.error {
+    color: red;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    background: #ffebee;
+}
+
+html[data-theme="dark"] .error {
+    background: #3a1d1d;
+}
+
+#data-container {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+html[data-theme="light"] #data-container {
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+html[data-theme="dark"] #data-container {
+    background: #333;
+    border: 1px solid #444;
+}
+
+
+.controls {
+    margin: 20px 0;
+}
+
+.controls button {
+    margin-right: 10px;
+}

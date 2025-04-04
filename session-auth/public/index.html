@@ -1,38 +1,32 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Авторизация</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;
-            padding: 20px; }
-        .form-group { margin-bottom: 15px; }
-        input { padding: 8px; width: 100%; box-sizing: border-box; }
-        button { padding: 10px 15px; background: #4CAF50; color: white; border: none;
-            cursor: pointer; }
-        button:hover { background: #45a049; }
-        .hidden { display: none; }
-        .error { color: red; }
-    </style>
+    <title>Вход / Регистрация</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<div id="auth-section">
-    <h2>Вход в систему</h2>
-    <div class="form-group">
-        <input type="text" id="username" placeholder="Логин">
+<div class="container">
+    <div id="auth-forms">
+        <div class="form-container" id="login-form">
+            <h2>Вход</h2>
+            <input style="margin-bottom: 15px;" type="text" id="login-username" placeholder="Логин">
+            <input style="margin-bottom: 15px;" type="password" id="login-password" placeholder="Пароль">
+            <button id="login-btn">Войти</button>
+            <p style="text-align: center;">Нет аккаунта? <a href="#" id="show-register">Зарегистрироваться</a></p>
+        </div>
+
+        <div class="form-container hidden" id="register-form">
+            <h2>Регистрация</h2>
+            <input style="margin-bottom: 15px;" type="text" id="register-username" placeholder="Логин">
+            <input style="margin-bottom: 15px;" type="password" id="register-password" placeholder="Пароль">
+            <button id="register-btn">Зарегистрироваться</button>
+            <p style="text-align: center;">Уже есть аккаунт? <a href="#" id="show-login">Войти</a></p>
+        </div>
     </div>
-    <div class="form-group">
-        <input type="password" id="password" placeholder="Пароль">
-    </div>
-    <button id="login-btn">Войти</button>
-    <p id="error-message" class="error hidden"></p>
+    <div id="error-message" class="error hidden"></div>
 </div>
-<div id="profile-section" class="hidden">
-    <h2>Профиль</h2>
-    <p>Добро пожаловать, <span id="username-display"></span>!</p>
-    <button id="logout-btn">Выйти</button>
-</div>
-<script src="script.js"></script>
+<script src="/script.js"></script>
 </body>
 </html>

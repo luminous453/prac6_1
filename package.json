@@ -1,10 +1,20 @@
 {
-  "name": "${PROJECT_NAME}",
+  "name": "prac6",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "session-auth/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node session-auth/server.js"
   },
-  "private": true
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1"
+  },
+  "description": ""
 }
