@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Проверяем авторизацию при загрузке. Если авторизован - перекидываем на страницу профиля
     await checkAuth();
-
+    loadTheme();
     // Функция для отображения ошибок для тупых
     function showError(message) {
         if (errorMessage) {

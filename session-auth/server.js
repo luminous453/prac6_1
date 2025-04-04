@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const fs = require('fs');
 const path = require('path');
 
-// ПОмооогииииитееее
 const app = express();
 const cacheDir = path.join(__dirname, 'cache');
 
@@ -14,7 +13,6 @@ if (!fs.existsSync(cacheDir)) {
     fs.mkdirSync(cacheDir);
 }
 
-// Мидлвары
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
