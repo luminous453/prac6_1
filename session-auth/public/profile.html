@@ -7,17 +7,19 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<div class="container">
-  <h1>Личный кабинет</h1>
-  <p>Добро пожаловать, <span id="username-display"></span>!</p>
+<div class="container profile-container">
+  <header class="profile-header">
+    <h1 class="profile-title">Личный кабинет</h1>
+    <p class="welcome-message">Добро пожаловать, <span id="username-display" class="username"></span>!</p>
+  </header>
 
   <div class="controls">
-    <button id="toggle-theme">Сменить тему</button>
-    <button id="refresh-data">Обновить данные</button>
-    <button id="logout-btn">Выйти из профиля</button>
+    <button id="toggle-theme" class="btn btn-theme">Сменить тему</button>
+    <button id="refresh-data" class="btn btn-refresh">Обновить данные</button>
+    <button id="logout-btn" class="btn btn-logout">Выйти из профиля</button>
   </div>
 
-  <div id="data-container"></div>
+  <div id="data-container" class="data-content"></div>
 </div>
 <script src="/script.js"></script>
 </body>

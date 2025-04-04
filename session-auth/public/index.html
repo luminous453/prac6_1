@@ -7,25 +7,25 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<div class="container">
-    <div id="auth-forms">
+<div class="container auth-container">
+    <div id="auth-forms" class="auth-forms-wrapper">
         <div class="form-container" id="login-form">
-            <h2>Вход</h2>
-            <input style="margin-bottom: 15px;" type="text" id="login-username" placeholder="Логин">
-            <input style="margin-bottom: 15px;" type="password" id="login-password" placeholder="Пароль">
-            <button id="login-btn">Войти</button>
-            <p style="text-align: center;">Нет аккаунта? <a href="#" id="show-register">Зарегистрироваться</a></p>
+            <h2 class="form-title">Вход</h2>
+            <input type="text" id="login-username" class="form-input" placeholder="Логин">
+            <input type="password" id="login-password" class="form-input" placeholder="Пароль">
+            <button id="login-btn" class="btn btn-primary">Войти</button>
+            <p class="form-footer">Нет аккаунта? <a href="#" id="show-register" class="form-link">Зарегистрироваться</a></p>
         </div>
 
         <div class="form-container hidden" id="register-form">
-            <h2>Регистрация</h2>
-            <input style="margin-bottom: 15px;" type="text" id="register-username" placeholder="Логин">
-            <input style="margin-bottom: 15px;" type="password" id="register-password" placeholder="Пароль">
-            <button id="register-btn">Зарегистрироваться</button>
-            <p style="text-align: center;">Уже есть аккаунт? <a href="#" id="show-login">Войти</a></p>
+            <h2 class="form-title">Регистрация</h2>
+            <input type="text" id="register-username" class="form-input" placeholder="Логин">
+            <input type="password" id="register-password" class="form-input" placeholder="Пароль">
+            <button id="register-btn" class="btn btn-primary">Зарегистрироваться</button>
+            <p class="form-footer">Уже есть аккаунт? <a href="#" id="show-login" class="form-link">Войти</a></p>
         </div>
     </div>
-    <div id="error-message" class="error hidden"></div>
+    <div id="error-message" class="error-message hidden"></div>
 </div>
 <script src="/script.js"></script>
 </body>
