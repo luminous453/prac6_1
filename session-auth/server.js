@@ -8,7 +8,6 @@ const path = require('path');
 const app = express();
 const cacheDir = path.join(__dirname, 'cache');
 
-// Создаем папку для кэша, если её нет
 if (!fs.existsSync(cacheDir)) {
     fs.mkdirSync(cacheDir);
 }
@@ -18,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(cookieParser());
 
-// Конфигурация сессии
+
 app.use(session({
     secret: 'complex_secret_key_123!@#',
     resave: false,
@@ -30,14 +29,14 @@ app.use(session({
     }
 }));
 
-// "База данных" пользователей (в реальном приложении - подключение к БД)
+
 const users = {};
 
-// Функция для кэширования данных в файлы
+
 function getCachedData(key, ttlSeconds = 30) {
     const cacheFile = path.join(cacheDir, `${key}.json`);
 
-    // Если файл существует и не устарел
+
     if (fs.existsSync(cacheFile)) {
         const stats = fs.statSync(cacheFile);
         const now = new Date().getTime();
@@ -49,17 +48,17 @@ function getCachedData(key, ttlSeconds = 30) {
         }
     }
 
-    // Генерируем новые данные
+
     const newData = {
         items: ['1', '2', '3'],
         timestamp: Date.now(),
         source: 'Файловый кэш'
     };
 
-    // Сохраняем в файл
+
     fs.writeFileSync(cacheFile, JSON.stringify(newData));
 
-    // Удаляем файл после истечения TTL
+
     setTimeout(() => {
         if (fs.existsSync(cacheFile)) {
             fs.unlinkSync(cacheFile);
@@ -69,7 +68,6 @@ function getCachedData(key, ttlSeconds = 30) {
     return newData;
 }
 
-// ---------------------- Обработчики путей ----------------------
 
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
@@ -158,7 +156,7 @@ app.post('/theme', (req, res) => {
     res.json({ success: true });
 });
 
-// Запускаем сервер
+// Сервер
 app.listen(3000, () => {
     console.log('Сервер запущен на http://localhost:3000');
 });

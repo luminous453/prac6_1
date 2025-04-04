@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const errorMessage = document.getElementById('error-message');
 
-    // Проверяем авторизацию при загрузке. Если авторизован - перекидываем на страницу профиля
+
     await checkAuth();
     loadTheme();
-    // Функция для отображения ошибок для тупых
     function showError(message) {
         if (errorMessage) {
             errorMessage.textContent = message;
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // Проверка авторизации
+
     async function checkAuth() {
         try {
             const response = await fetch('/check-auth', {
@@ -26,16 +25,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             const data = await response.json();
 
             if (data.authenticated) {
-                // Если на странице профиля - обновляем имя пользователя
+
                 if (document.getElementById('username-display')) {
                     document.getElementById('username-display').textContent = data.user.username;
                     loadTheme();
                 } else {
-                    // Если на главной странице - редирект на профиль
+
                     window.location.href = '/profile';
                 }
             } else if (window.location.pathname === '/profile') {
-                // Если на странице профиля без авторизации - редирект на главную
+
                 window.location.href = '/';
             }
         } catch (err) {
@@ -43,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // Загрузка темы и сохранение в data-аттрибут на странице чтоб красивенько было
+    // Загрузка темы и сохранение
     function loadTheme() {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
@@ -51,9 +50,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // Обработчики для главной страницы
+
     if (document.getElementById('login-btn')) {
-        // Переключение между формами входа и регистрации
+
         document.getElementById('show-register').addEventListener('click', (e) => {
             e.preventDefault();
             document.getElementById('login-form').classList.add('hidden');
@@ -65,7 +64,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('login-form').classList.remove('hidden');
         });
 
-        // Обработчик входа
+
         document.getElementById('login-btn').addEventListener('click', async () => {
             const username = document.getElementById('login-username').value;
             const password = document.getElementById('login-password').value;
@@ -92,7 +91,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
 
-        // Обработчик регистрации
+
         document.getElementById('register-btn').addEventListener('click', async () => {
             const username = document.getElementById('register-username').value;
             const password = document.getElementById('register-password').value;
@@ -122,7 +121,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // Обработчики для страницы профиля
+
     if (document.getElementById('logout-btn')) {
         // Смена темы
         document.getElementById('toggle-theme').addEventListener('click', async () => {
@@ -132,7 +131,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
 
-            // Сохраняем тему на сервере
+
             await fetch('/theme', {
                 method: 'POST',
                 headers: {
@@ -143,7 +142,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         });
 
-        // Обновление данных
+
         async function updateData() {
             try {
                 const response = await fetch('/data', {
@@ -152,8 +151,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const data = await response.json();
 
                 document.getElementById('data-container').innerHTML = `
-                    <h3>Данные API</h3>
-                    <p><strong>Источник:</strong> ${data.source}</p>
+                    <h3>Данные</h3>
                     <p><strong>Время генерации:</strong> ${new Date(data.timestamp).toLocaleTimeString()}</p>
                     <pre>${JSON.stringify(data.items, null, 2)}</pre>
                 `;
@@ -162,10 +160,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
 
-        // Кнопочка для обновления данных кэша
+
         document.getElementById('refresh-data').addEventListener('click', updateData);
 
-        // Выход
+
         document.getElementById('logout-btn').addEventListener('click', async () => {
             try {
                 const response = await fetch('/logout', {
@@ -183,7 +181,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
 
-        // Загружаем данные при открытии профиля
+
         await updateData();
     }
 });
